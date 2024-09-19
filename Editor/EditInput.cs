@@ -4,13 +4,21 @@ using UnityEngine.UIElements;
 
 public class EditInput : EditorWindow
 {
+    /// <summary>
+    /// Welcome message
+    /// </summary>
     private const string GREETING =
         "Hello, below this statement you can provide your .xml config. " +
-        "If you are confused by this Statement please visit:"
-        ;
+        "If you are confused by this Statement please visit:";
 
+    /// <summary>
+    /// Link to the README.md file
+    /// </summary>
     private const string README_MD = "https://github.com/wiredAce/README.md";
 
+    /// <summary>
+    /// Initialize the window and set the min and max size
+    /// </summary>
     [MenuItem("Window/GenerateMenu")]
     public static void Init()
     {
@@ -19,35 +27,69 @@ public class EditInput : EditorWindow
         window.maxSize = new Vector2(800, 600);
     }
 
+    /// <summary>
+    /// Build the GUI from the elements
+    /// </summary>
     private void CreateGUI()
     {
         LoadStyle();
 
-        var readMeMd = new HyperlinkLabel("Documentation", README_MD);
+        rootVisualElement.Add(GenerateGreeting());
+        rootVisualElement.Add(new HyperlinkLabel("ReadMe", README_MD));
+        rootVisualElement.Add(GenerateFilePathInput());
+        rootVisualElement.Add(GenerateGenerateButton());
+    }
 
+    /// <summary>
+    /// Generate the first label to be displayed in editor window
+    /// </summary>
+    /// <returns></returns>
+    private static Label GenerateGreeting()
+    {
         var greetingLabel = new Label(GREETING);
         greetingLabel.AddToClassList("greeting");
 
+        return greetingLabel;
+    }
+
+    /// <summary>
+    /// Generate the input field for the xml file path
+    /// </summary>
+    /// <returns></returns>
+    private static TextField GenerateFilePathInput()
+    {
         var filePathInput = new TextField();
         filePathInput.AddToClassList("path-input");
 
+        return filePathInput;
+    }
+
+    /// <summary>
+    /// Generate the button to trigger the generation of the menu
+    /// </summary>
+    /// <returns></returns>
+    private Button GenerateGenerateButton()
+    {
         var buttonLabel = new Label("GENERATE");
         var button = new Button(GenerateAction);
         button.AddToClassList("generate-button");
         button.Add(buttonLabel);
 
-        rootVisualElement.Add(greetingLabel);
-        rootVisualElement.Add(readMeMd);
-        rootVisualElement.Add(filePathInput);
-        rootVisualElement.Add(button);
+        return button;
     }
 
+    /// <summary>
+    /// Attach the style sheet to the window
+    /// </summary>
     private void LoadStyle()
     {
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/MenuGenerator/Editor/EditInput.uss");
         rootVisualElement.styleSheets.Add(styleSheet);
     }
 
+    /// <summary>
+    /// Triggers validation an then the controller to generate the menu
+    /// </summary>
     private void GenerateAction()
     {
         var textfield = rootVisualElement.Q<TextField>();
