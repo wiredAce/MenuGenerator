@@ -1,0 +1,23 @@
+.greeting {
+    width: 80%;
+    margin: auto;
+    margin-top: 10%;
+    white-space: normal;
+}
+
+.generate-button {
+    width: 50%;
+    margin: 10% auto;
+}
+
+.path-input {
+    width: 80%;
+    margin: 10% auto;
+}
+
+.hyperlink{
+    width: 80%;
+    margin: auto;
+    color: #0d8ce2;
+    text-decoration: underline;
+}
