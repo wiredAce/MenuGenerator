@@ -17,6 +17,11 @@ public class EditInput : EditorWindow
     private const string README_MD = "https://github.com/wiredAce/README.md";
 
     /// <summary>
+    /// Checks the given path for validity
+    /// </summary>
+    private readonly LocalFileValidator validator = new();
+
+    /// <summary>
     /// Initialize the window and set the min and max size
     /// </summary>
     [MenuItem("Window/GenerateMenu")]
@@ -84,15 +89,22 @@ public class EditInput : EditorWindow
     private void LoadStyle()
     {
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/MenuGenerator/Editor/EditInput.uss");
+
         rootVisualElement.styleSheets.Add(styleSheet);
     }
 
     /// <summary>
-    /// Triggers validation an then the controller to generate the menu
+    /// Triggers validation and the controller to generate the menu
     /// </summary>
     private void GenerateAction()
     {
         var textfield = rootVisualElement.Q<TextField>();
-        Debug.Log(textfield.value);
+
+        if (!validator.IsValid(textfield.value))
+        {
+            throw new ValidationException(validator.GetMessage());
+        }
+
+        Debug.Log("success");
     }
 }

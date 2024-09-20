@@ -19,5 +19,4 @@
     width: 80%;
     margin: auto;
     color: #0d8ce2;
-    text-decoration: underline;
 }

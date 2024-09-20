@@ -41,8 +41,10 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets/MenuGenerator/Editor/LocalFileValidator.cs" />
      <Compile Include="Assets/MenuGenerator/Editor/EditInput.cs" />
      <Compile Include="Assets/MenuGenerator/Editor/Components/HyperlinkLabel.cs" />
+     <Compile Include="Assets/MenuGenerator/Editor/ValidationException.cs" />
      <None Include="Assets/MenuGenerator/Editor/EditInput.uss" />
      <Reference Include="UnityEngine">
      <HintPath>/Applications/Unity/Hub/Editor/2021.3.2f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
