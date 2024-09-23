@@ -17,7 +17,7 @@ public class LocalFileValidator
     /// </summary>
     public bool IsValid(string value)
     {
-        return !FileExists(value) || !IsXmlFile(value) || !CanBeOpened(value);
+        return FileExists(value) && IsXmlFile(value) && CanBeOpened(value);
     }
 
     /// <summary>
