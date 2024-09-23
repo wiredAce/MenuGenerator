@@ -27,13 +27,11 @@ public class LocalFileValidator
     /// <returns>True if the file exists, otherwise false.</returns>
     private bool FileExists(string filePath)
     {
-        if (!File.Exists(filePath))
-        {
-            message = FILE_DOES_NOT_EXIST;
-            return false;
-        }
+        if (File.Exists(filePath)) return true;
 
-        return true;
+        message = FILE_DOES_NOT_EXIST;
+        return false;
+
     }
 
     /// <summary>
@@ -62,6 +60,7 @@ public class LocalFileValidator
         catch (IOException e)
         {
             message = ACCESS_VIOLATION + e.Message;
+
             return false;
         }
 

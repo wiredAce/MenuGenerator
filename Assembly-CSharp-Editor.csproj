@@ -41,11 +41,17 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets/MenuGenerator/Editor/LocalFileValidator.cs" />
-    <Compile Include="Assets/MenuGenerator/Editor/EditInputWindow.cs" />
+    <Compile Include="Assets/MenuGenerator/Editor/Parser/XmlParser.cs" />
+    <Compile Include="Assets/MenuGenerator/Editor/EditorInput/LocalFileValidator.cs" />
+    <Compile Include="Assets/MenuGenerator/Editor/Components/XmlMeta.cs" />
+    <Compile Include="Assets/MenuGenerator/Editor/EditorInput/EditorInputWindow.cs" />
     <Compile Include="Assets/MenuGenerator/Editor/Components/HyperlinkLabel.cs" />
-    <Compile Include="Assets/MenuGenerator/Editor/ValidationException.cs" />
-    <None Include="Assets/MenuGenerator/Editor/EditInputWindow.uss" />
+    <Compile Include="Assets/MenuGenerator/Editor/Components/UninitilizedException.cs" />
+    <Compile Include="Assets/MenuGenerator/Editor/GeneratorController/GeneratorController.cs" />
+    <Compile Include="Assets/MenuGenerator/Editor/ObjectBuilder/MenuObjectBuilder.cs" />
+    <Compile Include="Assets/MenuGenerator/Editor/Output/GeneratorOutput.cs" />
+    <Compile Include="Assets/MenuGenerator/Editor/Components/ValidationException.cs" />
+    <None Include="Assets/MenuGenerator/Editor/EditorInput/EditorInputWindow.uss" />
     <Reference Include="UnityEngine">
       <HintPath>/Applications/Unity/Hub/Editor/2021.3.2f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
