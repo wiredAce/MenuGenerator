@@ -1,20 +1,16 @@
+using System.IO;
+using MenuGenerator.Editor.GeneratorController;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class EditInputWindow : EditorWindow
+public class EditorInputWindow : EditorWindow
 {
-    /// <summary>
-    /// Welcome message
-    /// </summary>
     private const string GREETING =
         "Hello, below this statement you can provide your .xml config. " +
         "If you are confused by this Statement please visit:";
 
-    /// <summary>
-    /// Link to the README.md file
-    /// </summary>
-    private const string README_MD = "https://github.com/wiredAce/README.md";
+    private const string README_MD = "https://github.com/wiredAce/MenuGenerator/README.md";
 
     /// <summary>
     /// Checks the given path for validity
@@ -22,12 +18,17 @@ public class EditInputWindow : EditorWindow
     private readonly LocalFileValidator validator = new();
 
     /// <summary>
+    /// Builds the Menu From input File
+    /// </summary>
+    private readonly GeneratorController generatorController = new();
+
+    /// <summary>
     /// Initialize the window and set the min and max size
     /// </summary>
     [MenuItem("Window/GenerateMenu")]
     public static void Init()
     {
-        var window = GetWindow<EditInputWindow>("GenerateMenu");
+        var window = GetWindow<EditorInputWindow>("GenerateMenu");
         window.minSize = new Vector2(400, 300);
         window.maxSize = new Vector2(800, 600);
     }
@@ -88,7 +89,9 @@ public class EditInputWindow : EditorWindow
     /// </summary>
     private void LoadStyle()
     {
-        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/MenuGenerator/Editor/EditInputWindow.uss");
+        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(
+            "Assets/MenuGenerator/Editor/EditorInput/EditorInputWindow.uss"
+        );
 
         rootVisualElement.styleSheets.Add(styleSheet);
     }
@@ -105,6 +108,6 @@ public class EditInputWindow : EditorWindow
             throw new ValidationException(validator.GetMessage());
         }
 
-        Debug.Log("success");
+        generatorController.GenerateMenu(File.ReadAllText(textfield.value));
     }
 }
