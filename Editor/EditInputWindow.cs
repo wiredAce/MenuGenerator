@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class EditInput : EditorWindow
+public class EditInputWindow : EditorWindow
 {
     /// <summary>
     /// Welcome message
@@ -27,7 +27,7 @@ public class EditInput : EditorWindow
     [MenuItem("Window/GenerateMenu")]
     public static void Init()
     {
-        var window = GetWindow<EditInput>("GenerateMenu");
+        var window = GetWindow<EditInputWindow>("GenerateMenu");
         window.minSize = new Vector2(400, 300);
         window.maxSize = new Vector2(800, 600);
     }
@@ -88,7 +88,7 @@ public class EditInput : EditorWindow
     /// </summary>
     private void LoadStyle()
     {
-        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/MenuGenerator/Editor/EditInput.uss");
+        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/MenuGenerator/Editor/EditInputWindow.uss");
 
         rootVisualElement.styleSheets.Add(styleSheet);
     }
