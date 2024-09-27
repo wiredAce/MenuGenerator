@@ -8,6 +8,9 @@ namespace MenuGenerator.Editor.Controller
         private MenuObjectBuilder objectBuilder = new();
         private GeneratorOutput generatorOutput = new();
 
+        /// <summary>
+        /// Main routine of the program.
+        /// </summary>
         public void GenerateMenu(string fileStream)
         {
             //Parsing

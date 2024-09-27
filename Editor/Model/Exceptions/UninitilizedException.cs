@@ -1,8 +1,11 @@
 using System;
 
-public class UninitializedException : Exception
+namespace MenuGenerator.Editor.Model.Exceptions
 {
-    public UninitializedException(string message) : base(message)
+    public class UninitializedException : Exception
     {
+        public UninitializedException(string message) : base(message)
+        {
+        }
     }
 }

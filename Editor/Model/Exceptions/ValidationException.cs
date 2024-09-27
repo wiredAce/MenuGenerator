@@ -1,8 +1,11 @@
 using System;
 
-public class ValidationException : Exception
+namespace MenuGenerator.Editor.Model.Exceptions
 {
-    public ValidationException(string message) : base(message)
+    public class ValidationException : Exception
     {
+        public ValidationException(string message) : base(message)
+        {
+        }
     }
 }

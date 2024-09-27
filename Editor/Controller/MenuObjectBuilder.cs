@@ -6,6 +6,9 @@ using TMPro;
 
 namespace MenuGenerator.Editor.Controller
 {
+    /// <summary>
+    /// Places Menu Elements
+    /// </summary>
     public class MenuObjectBuilder
     {
         private PrefabManager pm = new();

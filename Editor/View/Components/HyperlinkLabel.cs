@@ -1,14 +1,17 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class HyperlinkLabel : Label
+namespace MenuGenerator.Editor.View.Components
 {
-    /// <summary>
-    /// Generate a clickable label that opens a URL
-    /// </summary>
-    public HyperlinkLabel(string text, string url) : base(text)
+    public class HyperlinkLabel : Label
     {
-        AddToClassList("hyperlink");
-        RegisterCallback<ClickEvent>(evt => Application.OpenURL(url));
+        /// <summary>
+        /// Generate a clickable label that opens a URL
+        /// </summary>
+        public HyperlinkLabel(string text, string url) : base(text)
+        {
+            AddToClassList("hyperlink");
+            RegisterCallback<ClickEvent>(evt => Application.OpenURL(url));
+        }
     }
 }

@@ -1,5 +1,6 @@
 using System.Xml;
 using JetBrains.Annotations;
+using MenuGenerator.Editor.Model.Exceptions;
 
 namespace MenuGenerator.Editor.Model
 {
@@ -19,6 +20,7 @@ namespace MenuGenerator.Editor.Model
         /// stream from user provided file
         /// </summary>
         private string fileStream;
+
 
         /// <summary>
         /// Finished xml document

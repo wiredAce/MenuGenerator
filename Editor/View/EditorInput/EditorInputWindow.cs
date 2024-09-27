@@ -1,113 +1,118 @@
 using System.IO;
 using MenuGenerator.Editor.Controller;
+using MenuGenerator.Editor.Model.Exceptions;
+using MenuGenerator.Editor.View.Components;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class EditorInputWindow : EditorWindow
+namespace MenuGenerator.Editor.View.EditorInput
 {
-    private const string GREETING =
-        "Hello, below this statement you can provide your .xml config. " +
-        "If you are confused by this Statement please visit:";
-
-    private const string README_MD = "https://github.com/wiredAce/MenuGenerator/README.md";
-
-    /// <summary>
-    /// Checks the given path for validity
-    /// </summary>
-    private readonly LocalFileValidator validator = new();
-
-    /// <summary>
-    /// Builds the Menu From input File
-    /// </summary>
-    private readonly GeneratorController generatorController = new();
-
-    /// <summary>
-    /// Initialize the window and set the min and max size
-    /// </summary>
-    [MenuItem("Window/GenerateMenu")]
-    public static void Init()
+    public class EditorInputWindow : EditorWindow
     {
-        var window = GetWindow<EditorInputWindow>("GenerateMenu");
-        window.minSize = new Vector2(400, 300);
-        window.maxSize = new Vector2(800, 600);
-    }
+        private const string GREETING =
+            "Hello, below this statement you can provide your .xml config. " +
+            "If you are confused by this Statement please visit:";
 
-    /// <summary>
-    /// Build the GUI from the elements
-    /// </summary>
-    private void CreateGUI()
-    {
-        LoadStyle();
+        private const string README_MD = "https://github.com/wiredAce/MenuGenerator/README.md";
 
-        rootVisualElement.Add(GenerateGreeting());
-        rootVisualElement.Add(new HyperlinkLabel("ReadMe", README_MD));
-        rootVisualElement.Add(GenerateFilePathInput());
-        rootVisualElement.Add(GenerateGenerateButton());
-    }
+        /// <summary>
+        /// Checks the given path for validity
+        /// </summary>
+        private readonly LocalFileValidator validator = new();
 
-    /// <summary>
-    /// Generate the first label to be displayed in editor window
-    /// </summary>
-    /// <returns></returns>
-    private static Label GenerateGreeting()
-    {
-        var greetingLabel = new Label(GREETING);
-        greetingLabel.AddToClassList("greeting");
+        /// <summary>
+        /// Builds the Menu From input File
+        /// </summary>
+        private readonly GeneratorController generatorController = new();
 
-        return greetingLabel;
-    }
-
-    /// <summary>
-    /// Generate the input field for the xml file path
-    /// </summary>
-    /// <returns></returns>
-    private static TextField GenerateFilePathInput()
-    {
-        var filePathInput = new TextField();
-        filePathInput.AddToClassList("path-input");
-
-        return filePathInput;
-    }
-
-    /// <summary>
-    /// Generate the button to trigger the generation of the menu
-    /// </summary>
-    /// <returns></returns>
-    private Button GenerateGenerateButton()
-    {
-        var buttonLabel = new Label("GENERATE");
-        var button = new Button(GenerateAction);
-        button.AddToClassList("generate-button");
-        button.Add(buttonLabel);
-
-        return button;
-    }
-
-    /// <summary>
-    /// Attach the style sheet to the window
-    /// </summary>
-    private void LoadStyle()
-    {
-        var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(
-            "Assets/MenuGenerator/Editor/EditorInput/EditorInputWindow.uss"
-        );
-
-        rootVisualElement.styleSheets.Add(styleSheet);
-    }
-
-    /// <summary>
-    /// Triggers validation and the controller to generate the menu
-    /// </summary>
-    private void GenerateAction()
-    {
-        var textfield = rootVisualElement.Q<TextField>();
-
-        if (!validator.IsValid(textfield.value))
+        /// <summary>
+        /// Initialize the window and set the min and max size
+        /// </summary>
+        [MenuItem("Window/GenerateMenu")]
+        public static void Init()
         {
-            throw new ValidationException(validator.GetMessage());
+            var window = GetWindow<EditorInputWindow>("GenerateMenu");
+            window.minSize = new Vector2(400, 300);
+            window.maxSize = new Vector2(800, 600);
         }
 
-        generatorController.GenerateMenu(File.ReadAllText(textfield.value));
+        /// <summary>
+        /// Build the GUI from the elements
+        /// </summary>
+        private void CreateGUI()
+        {
+            LoadStyle();
+
+            rootVisualElement.Add(GenerateGreeting());
+            rootVisualElement.Add(new HyperlinkLabel("ReadMe", README_MD));
+            rootVisualElement.Add(GenerateFilePathInput());
+            rootVisualElement.Add(GenerateGenerateButton());
+        }
+
+        /// <summary>
+        /// Generate the first label to be displayed in editor window
+        /// </summary>
+        /// <returns></returns>
+        private static Label GenerateGreeting()
+        {
+            var greetingLabel = new Label(GREETING);
+            greetingLabel.AddToClassList("greeting");
+
+            return greetingLabel;
+        }
+
+        /// <summary>
+        /// Generate the input field for the xml file path
+        /// </summary>
+        /// <returns></returns>
+        private static TextField GenerateFilePathInput()
+        {
+            var filePathInput = new TextField();
+            filePathInput.AddToClassList("path-input");
+
+            return filePathInput;
+        }
+
+        /// <summary>
+        /// Generate the button to trigger the generation of the menu
+        /// </summary>
+        /// <returns></returns>
+        private Button GenerateGenerateButton()
+        {
+            var buttonLabel = new Label("GENERATE");
+            var button = new Button(GenerateAction);
+            button.AddToClassList("generate-button");
+            button.Add(buttonLabel);
+
+            return button;
+        }
+
+        /// <summary>
+        /// Attach the style sheet to the window
+        /// </summary>
+        private void LoadStyle()
+        {
+            var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(
+                "Assets/MenuGenerator/Editor/View/EditorInput/EditorInputWindow.uss"
+            );
+
+            rootVisualElement.styleSheets.Add(styleSheet);
+        }
+
+        /// <summary>
+        /// Triggers validation and the controller to generate the menu
+        /// </summary>
+        private void GenerateAction()
+        {
+            var textfield = rootVisualElement.Q<TextField>();
+
+            if (!validator.IsValid(textfield.value))
+            {
+                throw new ValidationException(validator.GetMessage());
+            }
+
+            generatorController.GenerateMenu(File.ReadAllText(textfield.value));
+        }
     }
 }
