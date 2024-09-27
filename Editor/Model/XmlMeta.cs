@@ -1,4 +1,4 @@
-namespace MenuGenerator.Editor.Components
+namespace MenuGenerator.Editor.Model
 {
     public class XmlMeta
     {

@@ -1,5 +1,5 @@
 using System.IO;
-using MenuGenerator.Editor.GeneratorController;
+using MenuGenerator.Editor.Controller;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;

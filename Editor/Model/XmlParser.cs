@@ -1,8 +1,7 @@
 using System.Xml;
 using JetBrains.Annotations;
-using MenuGenerator.Editor.Components;
 
-namespace MenuGenerator.Editor.Parser
+namespace MenuGenerator.Editor.Model
 {
     public class XmlParser
     {

@@ -1,8 +1,6 @@
-using MenuGenerator.Editor.ObjectBuilder;
-using MenuGenerator.Editor.Output;
-using MenuGenerator.Editor.Parser;
+using MenuGenerator.Editor.Model;
 
-namespace MenuGenerator.Editor.GeneratorController
+namespace MenuGenerator.Editor.Controller
 {
     public class GeneratorController
     {

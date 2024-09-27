@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace MenuGenerator.Editor.PrefabManager
+namespace MenuGenerator.Editor.Model
 {
     public class PrefabManager
     {

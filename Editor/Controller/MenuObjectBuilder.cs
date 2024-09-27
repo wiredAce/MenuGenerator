@@ -1,12 +1,11 @@
+using System.Xml;
+using JetBrains.Annotations;
+using UnityEngine;
+using MenuGenerator.Editor.Model;
 using TMPro;
 
-namespace MenuGenerator.Editor.ObjectBuilder
+namespace MenuGenerator.Editor.Controller
 {
-    using System.Xml;
-    using JetBrains.Annotations;
-    using UnityEngine;
-    using PrefabManager;
-
     public class MenuObjectBuilder
     {
         private PrefabManager pm = new();

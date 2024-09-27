@@ -1,4 +1,4 @@
-namespace MenuGenerator.Editor.Output
+namespace MenuGenerator.Editor.Controller
 {
     public class GeneratorOutput
     {
