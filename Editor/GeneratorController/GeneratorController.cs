@@ -12,9 +12,13 @@ namespace MenuGenerator.Editor.GeneratorController
 
         public void GenerateMenu(string fileStream)
         {
+            //Parsing
             xmlParser.SetFileStream(fileStream);
             var document = xmlParser.ParseFile();
             var xmlMeta = xmlParser.GetMetaInformation();
+
+            //Building
+            objectBuilder.Build(document);
         }
     }
 }
