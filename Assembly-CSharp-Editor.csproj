@@ -45,6 +45,7 @@
     <Compile Include="Assets/MenuGenerator/Editor/EditorInput/LocalFileValidator.cs" />
     <Compile Include="Assets/MenuGenerator/Editor/Components/XmlMeta.cs" />
     <Compile Include="Assets/MenuGenerator/Editor/EditorInput/EditorInputWindow.cs" />
+    <Compile Include="Assets/MenuGenerator/Editor/PrefabManager/PrefabManager.cs" />
     <Compile Include="Assets/MenuGenerator/Editor/Components/HyperlinkLabel.cs" />
     <Compile Include="Assets/MenuGenerator/Editor/Components/UninitilizedException.cs" />
     <Compile Include="Assets/MenuGenerator/Editor/GeneratorController/GeneratorController.cs" />
@@ -1038,6 +1039,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp.csproj">
+      <Project>{2b001671-1f9b-6464-4504-236922f0c6aa}</Project>
+      <Name>Assembly-CSharp</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
