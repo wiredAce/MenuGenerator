@@ -41,18 +41,18 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets/MenuGenerator/Editor/Parser/XmlParser.cs" />
-    <Compile Include="Assets/MenuGenerator/Editor/EditorInput/LocalFileValidator.cs" />
-    <Compile Include="Assets/MenuGenerator/Editor/Components/XmlMeta.cs" />
-    <Compile Include="Assets/MenuGenerator/Editor/EditorInput/EditorInputWindow.cs" />
-    <Compile Include="Assets/MenuGenerator/Editor/PrefabManager/PrefabManager.cs" />
-    <Compile Include="Assets/MenuGenerator/Editor/Components/HyperlinkLabel.cs" />
-    <Compile Include="Assets/MenuGenerator/Editor/Components/UninitilizedException.cs" />
-    <Compile Include="Assets/MenuGenerator/Editor/GeneratorController/GeneratorController.cs" />
-    <Compile Include="Assets/MenuGenerator/Editor/ObjectBuilder/MenuObjectBuilder.cs" />
-    <Compile Include="Assets/MenuGenerator/Editor/Output/GeneratorOutput.cs" />
-    <Compile Include="Assets/MenuGenerator/Editor/Components/ValidationException.cs" />
-    <None Include="Assets/MenuGenerator/Editor/EditorInput/EditorInputWindow.uss" />
+    <Compile Include="Assets/MenuGenerator/Editor/Model/XmlParser.cs" />
+    <Compile Include="Assets/MenuGenerator/Editor/View/EditorInput/LocalFileValidator.cs" />
+    <Compile Include="Assets/MenuGenerator/Editor/Model/XmlMeta.cs" />
+    <Compile Include="Assets/MenuGenerator/Editor/View/EditorInput/EditorInputWindow.cs" />
+    <Compile Include="Assets/MenuGenerator/Editor/Model/PrefabManager.cs" />
+    <Compile Include="Assets/MenuGenerator/Editor/View/Components/HyperlinkLabel.cs" />
+    <Compile Include="Assets/MenuGenerator/Editor/Model/Exceptions/UninitilizedException.cs" />
+    <Compile Include="Assets/MenuGenerator/Editor/Controller/GeneratorController.cs" />
+    <Compile Include="Assets/MenuGenerator/Editor/Controller/MenuObjectBuilder.cs" />
+    <Compile Include="Assets/MenuGenerator/Editor/Controller/GeneratorOutput.cs" />
+    <Compile Include="Assets/MenuGenerator/Editor/Model/Exceptions/ValidationException.cs" />
+    <None Include="Assets/MenuGenerator/Editor/View/EditorInput/EditorInputWindow.uss" />
     <Reference Include="UnityEngine">
       <HintPath>/Applications/Unity/Hub/Editor/2021.3.2f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
