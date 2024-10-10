@@ -41,7 +41,10 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets/MenuGenerator/Behaviours/Navigator.cs" />
+    <Compile Include="Assets/MenuGenerator/Behaviours/ButtonBehaviour.cs" />
     <Compile Include="Assets/debug.cs" />
+    <Compile Include="Assets/MenuGenerator/Behaviours/FolderBehaviour.cs" />
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" />

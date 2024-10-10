@@ -64,7 +64,6 @@ namespace MenuGenerator.Editor.Model
             return xmlMeta;
         }
 
-
         public void SetFileStream(string _fileStream)
         {
             fileStream = _fileStream;

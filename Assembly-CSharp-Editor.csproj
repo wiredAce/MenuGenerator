@@ -52,6 +52,7 @@
     <Compile Include="Assets/MenuGenerator/Editor/Controller/MenuObjectBuilder.cs" />
     <Compile Include="Assets/MenuGenerator/Editor/Controller/GeneratorOutput.cs" />
     <Compile Include="Assets/MenuGenerator/Editor/Model/Exceptions/ValidationException.cs" />
+    <Compile Include="Assets/MenuGenerator/Editor/Model/Constants/ModelName.cs" />
     <None Include="Assets/MenuGenerator/Editor/View/EditorInput/EditorInputWindow.uss" />
     <Reference Include="UnityEngine">
       <HintPath>/Applications/Unity/Hub/Editor/2021.3.2f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
