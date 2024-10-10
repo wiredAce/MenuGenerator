@@ -1,5 +1,4 @@
 using System.Xml;
-using JetBrains.Annotations;
 using MenuGenerator.Behaviours;
 using UnityEngine;
 using MenuGenerator.Editor.Model;
@@ -13,7 +12,7 @@ namespace MenuGenerator.Editor.Controller
     /// </summary>
     public class MenuObjectBuilder
     {
-        private PrefabManager pm = new();
+        private readonly PrefabManager pm = new();
 
         /// <summary>
         /// Initializes basic structure and starts recursive traversal
@@ -28,9 +27,8 @@ namespace MenuGenerator.Editor.Controller
 
             var rootObject = InitRoot();
             rootObject.name = "root";
-            //todo/marbro es braucht noch nen eventsystem sonst zerbricht alles
             InitNavigator(rootObject).GetComponent<Navigator>();
-            TraverseRecursively(rootNode, rootObject);
+            TraverseRecursively(rootNode, rootObject, "",true);
         }
 
         /// <summary>
@@ -40,6 +38,7 @@ namespace MenuGenerator.Editor.Controller
         private Transform InitRoot()
         {
             var rootObject = Object.Instantiate(pm.GetPrefabByName(ModelName.ROOT));
+            Object.Instantiate(pm.GetPrefabByName(ModelName.EVENT_SYSTEM), rootObject.transform);
             var canvas = rootObject.GetComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
 
@@ -64,14 +63,22 @@ namespace MenuGenerator.Editor.Controller
         /// <param name="node"></param>
         /// <param name="grandParent"></param>
         /// <param name="currentPath"></param>
-        private void TraverseRecursively(XmlNode node, Transform grandParent, string currentPath = "")
+        /// <param name="firstLayer"></param>
+        private void TraverseRecursively(XmlNode node, Transform grandParent, string currentPath = "", bool firstLayer = false)
         {
-            var newPath = currentPath != "" ?  $"{currentPath}/{node.Name}" : node.Name;
-            var parent = InstantiateFolder(node.Name, grandParent, newPath);
+            var newPath = firstLayer ? node.Name : $"{currentPath}/{node.Name}";
+            var parent = InstantiateFolder(node.Name, grandParent, newPath, firstLayer);
+            var childNodes = node.ChildNodes;
+            var childCount = childNodes.Count;
 
-            foreach (XmlNode childNode in node.ChildNodes)
+            if (!firstLayer) InstantiateReturnButton(currentPath, parent);
+
+            for (int i = 0; i < childCount; i++)
             {
-                InstantiateButton(childNode.Name, parent, newPath);
+                var childNode = childNodes[i];
+                var offset = (childCount - i - 1) * 100;
+
+                InstantiateButton(childNode.Name, parent, newPath, offset, firstLayer);
                 TraverseRecursively(childNode, parent, newPath);
             }
         }
@@ -82,12 +89,14 @@ namespace MenuGenerator.Editor.Controller
         /// <param name="name"></param>
         /// <param name="parent"></param>
         /// <param name="folderPath"></param>
+        /// <param name="isActive"></param>
         /// <returns></returns>
-        private Transform InstantiateFolder(string name, Transform parent, string folderPath)
+        private Transform InstantiateFolder(string name, Transform parent, string folderPath, bool isActive)
         {
             var folder = Object.Instantiate(pm.GetPrefabByName(ModelName.FOLDER), parent);
             folder.name = name;
             folder.transform.GetChild(0).name += folderPath;
+            folder.SetActive(isActive);
 
             return folder.transform;
         }
@@ -98,7 +107,9 @@ namespace MenuGenerator.Editor.Controller
         /// <param name="name"></param>
         /// <param name="parent"></param>
         /// <param name="currentPath"></param>
-        private void InstantiateButton(string name, [CanBeNull] Transform parent, string currentPath)
+        /// <param name="offset"></param>
+        /// <param name="isActive"></param>
+        private void InstantiateButton(string name, Transform parent, string currentPath, int? offset, bool isActive)
         {
             var button = Object.Instantiate(pm.GetPrefabByName(ModelName.BUTTON), parent);
             var buttonText = button.transform.GetChild(0);
@@ -106,8 +117,29 @@ namespace MenuGenerator.Editor.Controller
             var targetPath = $"{currentPath}/{name}";
 
             rectTransform.sizeDelta = new Vector2(150, 50);
+
+            if (null != offset) rectTransform.anchoredPosition = new Vector2(0, offset.Value);
+
             button.name = "to_" + name;
             buttonText.GetComponent<TextMeshProUGUI>().text = name;
+            button.transform.GetChild(1).name = targetPath;
+            button.SetActive(isActive);
+        }
+
+        /// <summary>
+        /// Instantiates a button object that when clicked returns one layer up
+        /// </summary>
+        /// <param name="targetPath"></param>
+        /// <param name="parent"></param>
+        private void InstantiateReturnButton(string targetPath, Transform parent)
+        {
+            var button = Object.Instantiate(pm.GetPrefabByName(ModelName.BUTTON), parent);
+            var rectTransform = button.GetComponent<RectTransform>();
+            var buttonText = button.transform.GetChild(0);
+
+            rectTransform.sizeDelta = new Vector2(50, 50);
+            rectTransform.anchoredPosition = new Vector2(-200, -200);
+            buttonText.GetComponent<TextMeshProUGUI>().text = "<-";
             button.transform.GetChild(1).name = targetPath;
         }
     }

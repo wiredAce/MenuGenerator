@@ -1,1 +1,8 @@
-Add Namespaces to all files
+elements:
+    generic button
+    slider
+Style:
+    Buttons:
+        background
+        outline
+
