@@ -29,7 +29,6 @@ namespace MenuGenerator.Behaviours
         private void Init()
         {
             // Set the parameters
-            //todo/marbro hierarchi nach oben traversen bis root gefunden wird
             navigator = SearchNavigator();
             path = gameObject.transform.GetChild(0).name;
             path = path[12..]; //cut identifier => '$filePath:/'
@@ -47,9 +46,12 @@ namespace MenuGenerator.Behaviours
 
             while (parent != null)
             {
-                if (parent.GetComponent<Navigator>() != null)
+                foreach (Transform child in parent)
                 {
-                    return parent.GetComponent<Navigator>();
+                    if (child.GetComponent<Navigator>() != null)
+                    {
+                        return child.GetComponent<Navigator>();
+                    }
                 }
 
                 parent = parent.parent;
