@@ -51,7 +51,6 @@
     <Compile Include="Assets/MenuGenerator/Editor/Controller/GeneratorController.cs" />
     <Compile Include="Assets/MenuGenerator/Editor/Controller/MenuObjectBuilder.cs" />
     <Compile Include="Assets/MenuGenerator/Editor/Model/Constants/ModelName.cs" />
-    <Compile Include="Assets/MenuGenerator/Editor/Controller/GeneratorOutput.cs" />
     <Compile Include="Assets/MenuGenerator/Editor/Model/Exceptions/ValidationException.cs" />
     <None Include="Assets/MenuGenerator/Editor/View/EditorInput/EditorInputWindow.uss" />
     <Reference Include="UnityEngine">

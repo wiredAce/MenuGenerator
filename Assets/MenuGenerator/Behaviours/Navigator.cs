@@ -3,6 +3,10 @@ using UnityEngine;
 
 namespace MenuGenerator.Behaviours
 {
+    /// <summary>
+    /// Behaviour of a menu-navigator that can hide all menu elements and
+    /// traverse a path to a target layer while activating all elements on the way
+    /// </summary>
     public class Navigator: MonoBehaviour
     {
         /// <summary>

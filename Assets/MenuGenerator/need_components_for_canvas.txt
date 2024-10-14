@@ -1,8 +1,0 @@
-Root:
-    Canvas
-    CanvasScaler
-    GraphicRaycaster
-Button:
-    Button
-    Image
-    CanvasRenderer
