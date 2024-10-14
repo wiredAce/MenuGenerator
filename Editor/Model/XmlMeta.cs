@@ -6,10 +6,5 @@ namespace MenuGenerator.Editor.Model
         /// Name of root-menu object
         /// </summary>
         public string MenuName { get; set; }
-
-        /// <summary>
-        /// Directory of user provided resources
-        /// </summary>
-        public string ResourceLocation { get; set; }
     }
 }

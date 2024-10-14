@@ -17,12 +17,6 @@ namespace MenuGenerator.Editor.Model
         private const string DOCUMENT_MISSING = "document must be parsed before meta info is accessible";
 
         /// <summary>
-        /// stream from user provided file
-        /// </summary>
-        private string fileStream;
-
-
-        /// <summary>
         /// Finished xml document
         /// </summary>
         private XmlDocument document;
@@ -32,7 +26,7 @@ namespace MenuGenerator.Editor.Model
         /// </summary>
         /// <returns></returns>
         /// <exception cref="UninitializedException"></exception>
-        public XmlDocument ParseFile()
+        public XmlDocument ParseFile(string fileStream)
         {
             if (null == fileStream)
                 throw new UninitializedException(FILESTREAM_MISSING);
@@ -62,11 +56,6 @@ namespace MenuGenerator.Editor.Model
             if (null != metaNode["menuName"]) xmlMeta.MenuName = metaNode["menuName"].InnerText;
 
             return xmlMeta;
-        }
-
-        public void SetFileStream(string _fileStream)
-        {
-            fileStream = _fileStream;
         }
     }
 }

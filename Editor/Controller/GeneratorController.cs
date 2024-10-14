@@ -4,22 +4,25 @@ namespace MenuGenerator.Editor.Controller
 {
     public class GeneratorController
     {
+        /// <summary>
+        /// Collecting Info from user provided XML file
+        /// </summary>
         private readonly XmlParser xmlParser = new();
-        private MenuObjectBuilder objectBuilder = new();
-        private GeneratorOutput generatorOutput = new();
+
+        /// <summary>
+        /// Places Menu Elements in hierarchy
+        /// </summary>
+        private readonly MenuObjectBuilder objectBuilder = new();
 
         /// <summary>
         /// Main routine of the program.
         /// </summary>
         public void GenerateMenu(string fileStream)
         {
-            //Parsing
-            xmlParser.SetFileStream(fileStream);
-            var document = xmlParser.ParseFile();
+            var document = xmlParser.ParseFile(fileStream);
             var xmlMeta = xmlParser.GetMetaInformation();
 
-            //Building
-            objectBuilder.Build(document);
+            objectBuilder.Build(document, xmlMeta);
         }
     }
 }

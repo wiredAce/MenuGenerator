@@ -18,14 +18,14 @@ namespace MenuGenerator.Editor.Controller
         /// Initializes basic structure and starts recursive traversal
         /// </summary>
         /// <param name="document"></param>
-        public void Build(XmlDocument document)
+        public void Build(XmlDocument document, XmlMeta meta)
         {
             var rootNode = document.FirstChild;
 
             if (null != rootNode["meta"])
                 rootNode.RemoveChild(rootNode["meta"]);
 
-            var rootObject = InitRoot();
+            var rootObject = InitRoot(meta);
             rootObject.name = "root";
             InitNavigator(rootObject).GetComponent<Navigator>();
             TraverseRecursively(rootNode, rootObject, "",true);
@@ -35,12 +35,15 @@ namespace MenuGenerator.Editor.Controller
         /// Initializes the parent object for the menu
         /// </summary>
         /// <returns></returns>
-        private Transform InitRoot()
+        private Transform InitRoot(XmlMeta meta)
         {
             var rootObject = Object.Instantiate(pm.GetPrefabByName(ModelName.ROOT));
             Object.Instantiate(pm.GetPrefabByName(ModelName.EVENT_SYSTEM), rootObject.transform);
+
             var canvas = rootObject.GetComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+
+            if (null != meta && 0 < meta.MenuName.Length) rootObject.name = meta.MenuName;
 
             return rootObject.transform;
         }
@@ -94,9 +97,11 @@ namespace MenuGenerator.Editor.Controller
         private Transform InstantiateFolder(string name, Transform parent, string folderPath, bool isActive)
         {
             var folder = Object.Instantiate(pm.GetPrefabByName(ModelName.FOLDER), parent);
+            var src = Object.Instantiate(pm.GetPrefabByName(ModelName.EMPTY), folder.transform);
             folder.name = name;
             folder.transform.GetChild(0).name += folderPath;
             folder.SetActive(isActive);
+            src.name = "src";
 
             return folder.transform;
         }
@@ -141,6 +146,7 @@ namespace MenuGenerator.Editor.Controller
             rectTransform.anchoredPosition = new Vector2(-200, -200);
             buttonText.GetComponent<TextMeshProUGUI>().text = "<-";
             button.transform.GetChild(1).name = targetPath;
+            button.name = "re";
         }
     }
 }

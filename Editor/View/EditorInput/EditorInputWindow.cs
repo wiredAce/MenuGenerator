@@ -10,10 +10,16 @@ namespace MenuGenerator.Editor.View.EditorInput
 {
     public class EditorInputWindow : EditorWindow
     {
+        /// <summary>
+        /// Text to be displayed in the editor window
+        /// </summary>
         private const string GREETING =
             "Hello, below this statement you can provide your .xml config. " +
             "If you are confused by this Statement please visit:";
 
+        /// <summary>
+        /// Link to the ReadMe file
+        /// </summary>
         private const string README_MD = "https://github.com/wiredAce/MenuGenerator/README.md";
 
         /// <summary>

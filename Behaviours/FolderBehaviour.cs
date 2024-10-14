@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace MenuGenerator.Behaviours
 {
+    /// <summary>
+    /// Behaviour of a menu-folder that can be shown/hidden via the navigator
+    /// </summary>
     public class FolderBehaviour : MonoBehaviour
     {
         /// <summary>
@@ -48,10 +51,7 @@ namespace MenuGenerator.Behaviours
             {
                 foreach (Transform child in parent)
                 {
-                    if (child.GetComponent<Navigator>() != null)
-                    {
-                        return child.GetComponent<Navigator>();
-                    }
+                    if (child.GetComponent<Navigator>() != null) return child.GetComponent<Navigator>();
                 }
 
                 parent = parent.parent;

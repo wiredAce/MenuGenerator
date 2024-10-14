@@ -11,7 +11,7 @@ namespace MenuGenerator.Editor.View.Components
         public HyperlinkLabel(string text, string url) : base(text)
         {
             AddToClassList("hyperlink");
-            RegisterCallback<ClickEvent>(evt => Application.OpenURL(url));
+            RegisterCallback<ClickEvent>(_ => Application.OpenURL(url));
         }
     }
 }
