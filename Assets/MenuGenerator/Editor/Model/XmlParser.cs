@@ -1,3 +1,4 @@
+using System.Web.WebPages;
 using System.Xml;
 using JetBrains.Annotations;
 using MenuGenerator.Editor.Model.Exceptions;
@@ -28,7 +29,7 @@ namespace MenuGenerator.Editor.Model
         /// <exception cref="UninitializedException"></exception>
         public XmlDocument ParseFile(string fileStream)
         {
-            if (null == fileStream)
+            if (fileStream.IsEmpty())
                 throw new UninitializedException(FILESTREAM_MISSING);
 
             document = new XmlDocument();

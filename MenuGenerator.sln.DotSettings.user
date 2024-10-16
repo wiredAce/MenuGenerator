@@ -1,2 +1,16 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:Boolean x:Key="/Default/CodeEditing/Unity/AllowRiderUpdateNotifications/@EntryValue">False</s:Boolean></wpf:ResourceDictionary>
+	<s:Boolean x:Key="/Default/CodeEditing/Unity/AllowRiderUpdateNotifications/@EntryValue">False</s:Boolean>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d38ac076_002D2e33_002D4b19_002D8a36_002D162ff77e505b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="testyTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;NUnit3x::47D2AC6A-7E43-9BB5-F811-7114CFF8B5F3::.NETFramework,Version=v4.7.1::MenuGenerator.Editor.Test.testTest.testyTest&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::47D2AC6A-7E43-9BB5-F811-7114CFF8B5F3::.NETFramework,Version=v4.7.1::MenuGenerator.Editor.Test.View.LocalFileValidatorTest.TestSuccess&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::47D2AC6A-7E43-9BB5-F811-7114CFF8B5F3::.NETFramework,Version=v4.7.1::MenuGenerator.Editor.Test.View.LocalFileValidatorTest.TestFileNotFound&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::47D2AC6A-7E43-9BB5-F811-7114CFF8B5F3::.NETFramework,Version=v4.7.1::MenuGenerator.Editor.Test.View.LocalFileValidatorTest.TestWrongFileType&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::47D2AC6A-7E43-9BB5-F811-7114CFF8B5F3::.NETFramework,Version=v4.7.1::MenuGenerator.Editor.Test.Model.PrefabManagerTest.TestSuccess&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::47D2AC6A-7E43-9BB5-F811-7114CFF8B5F3::.NETFramework,Version=v4.7.1::MenuGenerator.Editor.Test.Model.PrefabManagerTest.TestAssetNotFound&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::47D2AC6A-7E43-9BB5-F811-7114CFF8B5F3::.NETFramework,Version=v4.7.1::MenuGenerator.Editor.Test.Model.XmlParserTest.TestSuccess&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::47D2AC6A-7E43-9BB5-F811-7114CFF8B5F3::.NETFramework,Version=v4.7.1::MenuGenerator.Editor.Test.Model.XmlParserTest.TestEmptyStream&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::47D2AC6A-7E43-9BB5-F811-7114CFF8B5F3::.NETFramework,Version=v4.7.1::MenuGenerator.Editor.Test.Model.XmlParserTest.TestInvalidXML&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::47D2AC6A-7E43-9BB5-F811-7114CFF8B5F3::.NETFramework,Version=v4.7.1::MenuGenerator.Editor.Test.Controller.MenuObjectBuilderTests.TestCreateRootObjectWithExpectedName&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

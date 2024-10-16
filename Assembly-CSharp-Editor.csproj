@@ -46,6 +46,9 @@
     <Compile Include="Assets/MenuGenerator/Editor/Model/XmlMeta.cs" />
     <Compile Include="Assets/MenuGenerator/Editor/View/EditorInput/EditorInputWindow.cs" />
     <Compile Include="Assets/MenuGenerator/Editor/Model/PrefabManager.cs" />
+    <Compile Include="Assets/MenuGenerator/Editor/Test/Model/PrefabManagerTest.cs" />
+    <Compile Include="Assets/MenuGenerator/Editor/Test/Model/XmlParserTest.cs" />
+    <Compile Include="Assets/MenuGenerator/Editor/Test/View/LocalFileValidatorTest.cs" />
     <Compile Include="Assets/MenuGenerator/Editor/View/Components/HyperlinkLabel.cs" />
     <Compile Include="Assets/MenuGenerator/Editor/Model/Exceptions/UninitilizedException.cs" />
     <Compile Include="Assets/MenuGenerator/Editor/Controller/GeneratorController.cs" />
@@ -53,6 +56,8 @@
     <Compile Include="Assets/MenuGenerator/Editor/Model/Constants/ModelName.cs" />
     <Compile Include="Assets/MenuGenerator/Editor/Model/Exceptions/ValidationException.cs" />
     <None Include="Assets/MenuGenerator/Editor/View/EditorInput/EditorInputWindow.uss" />
+    <None Include="Assets/MenuGenerator/Editor/Test/View/Components/test.xml" />
+    <None Include="Assets/MenuGenerator/Editor/Test/View/Components/test.txt" />
     <Reference Include="UnityEngine">
       <HintPath>/Applications/Unity/Hub/Editor/2021.3.2f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

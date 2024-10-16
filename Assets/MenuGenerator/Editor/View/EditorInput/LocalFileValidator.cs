@@ -5,12 +5,12 @@ namespace MenuGenerator.Editor.View.EditorInput
 {
     public class LocalFileValidator
     {
-        private const string FILE_DOES_NOT_EXIST = "The given string could not be resolved to a file";
+        public const string FILE_DOES_NOT_EXIST = "The given string could not be resolved to a file";
 
-        private const string ACCESS_VIOLATION =
+        public const string ACCESS_VIOLATION =
             "The given string was a file, but could not be opened. See IO Exception:\n";
 
-        private const string WRONG_FILETYPE = "The given string does not end on '.xml'";
+        public const string WRONG_FILETYPE = "The given string does not end on '.xml'";
 
         /// <summary>
         /// Occured error message. Can only be one at a time.
@@ -22,6 +22,11 @@ namespace MenuGenerator.Editor.View.EditorInput
         /// </summary>
         public bool IsValid(string value)
         {
+            var a = FileExists(value);
+            var b = IsXmlFile(value);
+            var c = CanBeOpened(value);
+
+
             return FileExists(value) && IsXmlFile(value) && CanBeOpened(value);
         }
 
