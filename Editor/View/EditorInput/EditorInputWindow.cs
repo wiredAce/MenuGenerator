@@ -20,7 +20,7 @@ namespace MenuGenerator.Editor.View.EditorInput
         /// <summary>
         /// Link to the ReadMe file
         /// </summary>
-        private const string README_MD = "https://github.com/wiredAce/MenuGenerator/README.md";
+        private const string README_MD = "https://github.com/wiredAce/MenuGenerator/blob/main/README.md";
 
         /// <summary>
         /// Checks the given path for validity
